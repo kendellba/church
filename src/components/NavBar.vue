@@ -42,6 +42,9 @@ const routes = [
   { path: '/about', name: 'About' },
   { path: '/events', name: 'Events' },
   { path: '/sermons', name: 'Sermons' },
+  { path: '/live', name: 'Live' },
+  { path: '/prayer', name: 'Prayer' },
+  { path: '/groups', name: 'Groups' },
   { path: '/contact', name: 'Contact' }
 ]
 </script>

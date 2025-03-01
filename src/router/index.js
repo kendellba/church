@@ -6,6 +6,9 @@ import AboutPage from '../views/AboutPage.vue'
 import EventsPage from '../views/EventsPage.vue'
 import SermonsPage from '../views/SermonsPage.vue'
 import ContactPage from '../views/ContactPage.vue'
+import LiveStreamPage from '../views/LiveStreamPage.vue'
+import PrayerRequestsPage from '../views/PrayerRequestsPage.vue'
+import GroupsPage from '../views/GroupsPage.vue'
 
 // Define routes
 const routes = [
@@ -38,7 +41,23 @@ const routes = [
     name: 'contact',
     component: ContactPage,
     meta: { title: 'Contact Us' }
+  },
+  {
+    path: '/live',
+    name: 'live',
+    component: LiveStreamPage
+  },
+  {
+    path: '/prayer',
+    name: 'prayer',
+    component: PrayerRequestsPage
+  },
+  {
+    path: '/groups',
+    name: 'groups',
+    component: GroupsPage
   }
+  
   
 ]
 
