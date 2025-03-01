@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref, reactive } from 'vue'
 import { useEventsStore } from '../stores/eventsStore'
 import EventCard from '../components/EventCard.vue'
 
@@ -71,6 +71,82 @@ const upcomingEvents = computed(() => eventsStore.upcomingEvents)
 onMounted(() => {
   eventsStore.fetchEvents()
 })
+
+// Sample data for events
+const events = ref([
+  {
+    id: 1,
+    title: 'Sunday Worship Service',
+    date: new Date(2023, 8, 24, 9, 0),
+    endDate: new Date(2023, 8, 24, 11, 0),
+    location: 'Main Sanctuary',
+    description: 'Join us for a time of worship, prayer, and teaching from God\'s Word. Children\'s ministry available for ages 0-12.',
+    image: 'https://picsum.photos/id/1048/800/500', // Updated image URL
+    featured: true,
+    recurring: 'weekly',
+    category: 'worship'
+  },
+  {
+    id: 2,
+    title: 'Bible Study Group',
+    date: new Date(2023, 8, 26, 18, 30),
+    endDate: new Date(2023, 8, 26, 20, 0),
+    location: 'Fellowship Hall',
+    description: 'Dive deeper into Scripture with our midweek Bible study. Currently studying the book of Romans.',
+    image: 'https://picsum.photos/id/1059/800/500', // Updated image URL
+    featured: false,
+    recurring: 'weekly',
+    category: 'study'
+  },
+  {
+    id: 3,
+    title: 'Youth Ministry Meeting',
+    date: new Date(2023, 8, 28, 19, 0),
+    endDate: new Date(2023, 8, 28, 21, 0),
+    location: 'Youth Center',
+    description: 'For students grades 7-12. Games, worship, teaching, and small groups designed to help teens grow in their faith.',
+    image: 'https://picsum.photos/id/1071/800/500', // Updated image URL
+    featured: false,
+    recurring: 'weekly',
+    category: 'youth'
+  },
+  {
+    id: 4,
+    title: 'Community Outreach: Food Drive',
+    date: new Date(2023, 9, 7, 10, 0),
+    endDate: new Date(2023, 9, 7, 14, 0),
+    location: 'Church Parking Lot',
+    description: 'Help us collect non-perishable food items for local families in need. Volunteers needed for sorting and distribution.',
+    image: 'https://picsum.photos/id/1042/800/500', // Updated image URL
+    featured: true,
+    recurring: null,
+    category: 'outreach'
+  },
+  {
+    id: 5,
+    title: 'Women\'s Breakfast',
+    date: new Date(2023, 9, 14, 9, 0),
+    endDate: new Date(2023, 9, 14, 11, 0),
+    location: 'Community Room',
+    description: 'Ladies, join us for breakfast, fellowship, and an encouraging message from our guest speaker, Lisa Thompson.',
+    image: 'https://picsum.photos/id/1068/800/500', // Updated image URL
+    featured: false,
+    recurring: 'monthly',
+    category: 'fellowship'
+  },
+  {
+    id: 6,
+    title: 'Men\'s Retreat',
+    date: new Date(2023, 9, 20, 17, 0),
+    endDate: new Date(2023, 9, 22, 12, 0),
+    location: 'Mountain View Retreat Center',
+    description: 'A weekend of fellowship, outdoor activities, and spiritual growth for men of all ages. Registration required by October 10.',
+    image: 'https://picsum.photos/id/1067/800/500', // Updated image URL
+    featured: true,
+    recurring: null,
+    category: 'retreat'
+  }
+])
 </script>
 
 <style scoped>

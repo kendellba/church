@@ -106,7 +106,77 @@
 </template>
 
 <script setup>
-// Home page component
+import { ref } from 'vue'
+
+// Sample data for upcoming events
+const upcomingEvents = ref([
+  {
+    id: 1,
+    title: 'Sunday Worship Service',
+    date: new Date(2023, 8, 24, 9, 0),
+    location: 'Main Sanctuary',
+    image: 'https://picsum.photos/id/1048/800/500' // Updated image URL
+  },
+  {
+    id: 2,
+    title: 'Bible Study Group',
+    date: new Date(2023, 8, 26, 18, 30),
+    location: 'Fellowship Hall',
+    image: 'https://picsum.photos/id/1059/800/500' // Updated image URL
+  },
+  {
+    id: 3,
+    title: 'Community Outreach',
+    date: new Date(2023, 9, 7, 10, 0),
+    location: 'Church Parking Lot',
+    image: 'https://picsum.photos/id/1042/800/500' // Updated image URL
+  }
+])
+
+// Sample data for recent sermons
+const recentSermons = ref([
+  {
+    id: 1,
+    title: 'Finding Peace in Troubled Times',
+    speaker: 'Pastor Sarah Johnson',
+    date: new Date(2023, 8, 20),
+    duration: '45:30',
+    image: 'https://picsum.photos/id/1068/800/450' // Updated image URL
+  },
+  {
+    id: 2,
+    title: 'The Power of Prayer',
+    speaker: 'Pastor Michael Williams',
+    date: new Date(2023, 8, 13),
+    duration: '38:15',
+    image: 'https://picsum.photos/id/1048/800/450' // Updated image URL
+  },
+  {
+    id: 3,
+    title: 'Walking in Faith',
+    speaker: 'Pastor John Smith',
+    date: new Date(2023, 8, 6),
+    duration: '42:30',
+    image: 'https://picsum.photos/id/1042/800/450' // Updated image URL
+  }
+])
+
+// Format date for display
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric'
+  })
+}
+
+// Format time for display
+const formatTime = (date) => {
+  return new Date(date).toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit'
+  })
+}
 </script>
 
 <style scoped>

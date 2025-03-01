@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+import SplashScreen from '../views/SplashScreen.vue'
 
 // Import page components
 import HomePage from '../views/HomePage.vue'
@@ -26,6 +27,13 @@ import NotificationsPage from '../views/member/NotificationsPage.vue'
 
 // Define routes
 const routes = [
+  // Splash Screen
+  {
+    path: '/splash',
+    name: 'splash',
+    component: SplashScreen
+  },
+  
   // Public routes
   {
     path: '/',
@@ -128,6 +136,13 @@ const routes = [
     name: 'notifications',
     component: NotificationsPage,
     meta: { requiresAuth: true }
+  },
+  
+  // 404 route
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/NotFoundPage.vue')
   }
 ]
 

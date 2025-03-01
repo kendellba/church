@@ -217,15 +217,15 @@ import { ref, reactive, computed, onMounted } from 'vue'
 import { Modal } from 'bootstrap'
 import MemberSidebar from '@/components/member/MemberSidebar.vue'
 
-// Sample saved sermons data
+// Sample data
 const sermons = ref([
   {
     id: 1,
     title: 'Finding Peace in Troubled Times',
-    speaker: 'Pastor John Smith',
-    date: new Date(2023, 7, 20),
-    duration: '45:12',
-    thumbnail: 'https://source.unsplash.com/random/800x450/?church,sermon',
+    speaker: 'Pastor Sarah Johnson',
+    date: new Date(2023, 8, 20),
+    duration: '45:30',
+    thumbnail: 'https://picsum.photos/id/1068/800/450', // Updated image URL
     videoUrl: '#',
     notesUrl: '#',
     tags: ['Peace', 'Faith', 'Trust'],
@@ -234,10 +234,10 @@ const sermons = ref([
   {
     id: 2,
     title: 'The Power of Prayer',
-    speaker: 'Pastor Sarah Johnson',
-    date: new Date(2023, 7, 13),
-    duration: '38:45',
-    thumbnail: 'https://source.unsplash.com/random/800x450/?prayer',
+    speaker: 'Pastor Michael Williams',
+    date: new Date(2023, 8, 13),
+    duration: '38:15',
+    thumbnail: 'https://picsum.photos/id/1048/800/450', // Updated image URL
     videoUrl: '#',
     notesUrl: '#',
     tags: ['Prayer', 'Spiritual Growth'],
@@ -249,7 +249,7 @@ const sermons = ref([
     speaker: 'Pastor John Smith',
     date: new Date(2023, 7, 6),
     duration: '42:30',
-    thumbnail: 'https://source.unsplash.com/random/800x450/?faith',
+    thumbnail: 'https://picsum.photos/id/1042/800/450', // Updated image URL
     videoUrl: '#',
     notesUrl: '#',
     tags: ['Faith', 'Discipleship'],
@@ -261,7 +261,7 @@ const sermons = ref([
     speaker: 'Pastor Michael Williams',
     date: new Date(2023, 6, 30),
     duration: '40:15',
-    thumbnail: 'https://source.unsplash.com/random/800x450/?purpose',
+    thumbnail: 'https://picsum.photos/id/1059/800/450', // Updated image URL
     videoUrl: '#',
     notesUrl: '#',
     tags: ['Purpose', 'Calling', 'Vision'],

@@ -138,14 +138,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 import MemberSidebar from '@/components/member/MemberSidebar.vue'
 
 const authStore = useAuthStore()
-
-// Get user data from auth store
-const user = computed(() => authStore.user)
+const user = computed(() => authStore.user || {})
 
 // Sample data for saved prayers
 const savedPrayers = computed(() => [
@@ -191,24 +189,27 @@ const savedSermons = computed(() => [
 ])
 
 // Sample data for upcoming events
-const upcomingEvents = computed(() => [
+const upcomingEvents = ref([
   {
     id: 1,
     title: 'Sunday Worship Service',
-    date: new Date(2023, 8, 3, 10, 0),
-    location: 'Main Sanctuary'
+    date: new Date(2023, 8, 24, 9, 0),
+    location: 'Main Sanctuary',
+    thumbnail: 'https://picsum.photos/id/1019/300/200'
   },
   {
     id: 2,
     title: 'Bible Study Group',
-    date: new Date(2023, 8, 6, 19, 0),
-    location: 'Fellowship Hall'
+    date: new Date(2023, 8, 26, 18, 30),
+    location: 'Fellowship Hall',
+    thumbnail: 'https://picsum.photos/id/1059/300/200'
   },
   {
     id: 3,
-    title: 'Youth Group Meeting',
-    date: new Date(2023, 8, 8, 18, 30),
-    location: 'Youth Center'
+    title: 'Youth Ministry Meeting',
+    date: new Date(2023, 8, 28, 19, 0),
+    location: 'Youth Center',
+    thumbnail: 'https://picsum.photos/id/1071/300/200'
   }
 ])
 

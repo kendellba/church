@@ -210,18 +210,27 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 import MemberSidebar from '@/components/member/MemberSidebar.vue'
 
 const authStore = useAuthStore()
+const user = computed(() => authStore.user || {})
+
+// Profile image state
+const profileImage = ref(null)
 
 // Form data
 const formData = reactive({
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
+  firstName: user.value?.firstName || '',
+  lastName: user.value?.lastName || '',
+  email: user.value?.email || '',
+  phone: user.value?.phone || '',
+  address: user.value?.address || '',
+  city: user.value?.city || '',
+  state: user.value?.state || '',
+  zip: user.value?.zip || '',
+  bio: user.value?.bio || '',
   preferences: {
     emailNotifications: true,
     prayerUpdates: true,
@@ -238,38 +247,17 @@ const passwordData = reactive({
 })
 
 // UI state
-const profileImage = ref(null)
 const isSubmitting = ref(false)
 const message = ref('')
 const messageType = ref('alert-success')
-
-// Initialize form with user data
-onMounted(() => {
-  if (authStore.user) {
-    formData.firstName = authStore.user.firstName || ''
-    formData.lastName = authStore.user.lastName || ''
-    formData.email = authStore.user.email || ''
-    formData.phone = authStore.user.phone || ''
-    
-    // In a real app, these would come from the user profile
-    formData.preferences = {
-      emailNotifications: true,
-      prayerUpdates: true,
-      eventReminders: true,
-      newsletterSubscription: true
-    }
-  }
-})
 
 // Handle profile image upload
 const handleImageUpload = (event) => {
   const file = event.target.files[0]
   if (file) {
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      profileImage.value = e.target.result
-    }
-    reader.readAsDataURL(file)
+    // In a real app, you would upload this to a server
+    // For now, we'll just create a local URL
+    profileImage.value = URL.createObjectURL(file)
   }
 }
 

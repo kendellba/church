@@ -51,7 +51,7 @@ import { useAuthStore } from '@/stores/authStore'
 const props = defineProps({
   activeTab: {
     type: String,
-    default: 'dashboard'
+    required: true
   }
 })
 
@@ -59,7 +59,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 // Get user data from auth store
-const user = computed(() => authStore.user)
+const user = computed(() => authStore.user || {})
 
 // Menu items for sidebar
 const menuItems = [
@@ -72,8 +72,12 @@ const menuItems = [
 
 // Format member since date
 const formatMemberSince = (date) => {
-  if (!date) return 'Today'
-  return new Date(date).toLocaleDateString([], { month: 'long', year: 'numeric' })
+  if (!date) return 'N/A'
+  
+  return new Date(date).toLocaleDateString('en-US', {
+    month: 'long',
+    year: 'numeric'
+  })
 }
 
 // Handle logout
