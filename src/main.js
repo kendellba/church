@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+import { useAuthStore } from './stores/authStore'
 
 // Import Bootstrap CSS and JS
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,12 +16,16 @@ import './assets/css/transitions.css'
 
 // Create the Vue application
 const app = createApp(App)
+const pinia = createPinia()
 
 // Use Pinia for state management
-app.use(createPinia())
+app.use(pinia)
 
 // Use Vue Router for navigation
 app.use(router)
 
-// Mount the app
-app.mount('#app') 
+// Initialize auth store
+const authStore = useAuthStore()
+authStore.initAuth().then(() => {
+  app.mount('#app')
+}) 
